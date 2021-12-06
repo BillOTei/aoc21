@@ -22,5 +22,21 @@ fs.readFile(process.argv[2], "utf8", function (err, contents) {
     }
   };
 
-  console.log(part1(fish, 0, initialFishCount));
+  let register = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  fish.forEach((x) => (register[x] += 1));
+  let daysCount = 0;
+  while (daysCount !== 256) {
+    const zeros = register[0];
+    for (let i = 0; i < 9; i++) {
+      const x = register[i];
+      register[i] -= x;
+      if (i !== 0) register[i - 1] += x;
+    }
+    register[6] += zeros;
+    register[8] += zeros;
+    daysCount++;
+  }
+  const part2 = register.reduce((a, b) => a + b, 0);
+
+  console.log(part1(fish, 0, initialFishCount), part2);
 });
