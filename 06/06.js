@@ -4,7 +4,7 @@ fs.readFile(process.argv[2], "utf8", function (err, contents) {
   const fish = contents.split(",").map((x) => parseInt(x, 10));
   const initialFishCount = fish.length;
 
-  const live = (list, day, len) => {
+  const part1 = (list, day, len) => {
     if (day === 80) return len;
     else {
       let newCount = 0;
@@ -14,7 +14,7 @@ fs.readFile(process.argv[2], "utf8", function (err, contents) {
         return x === 0 ? 6 : x - 1;
       });
 
-      return live(
+      return part1(
         [...newList, ...new Array(newCount).fill(8)],
         day + 1,
         len + newCount
@@ -22,5 +22,5 @@ fs.readFile(process.argv[2], "utf8", function (err, contents) {
     }
   };
 
-  console.log(live(fish, 0, initialFishCount));
+  console.log(part1(fish, 0, initialFishCount));
 });
