@@ -7,6 +7,7 @@ fs.readFile(process.argv[2], "utf8", function (err, contents) {
     .sort(function (a, b) {
       return a - b;
     });
+
   const findMedian = (sorted) => {
     const middle = Math.floor(sorted.length / 2);
 
@@ -16,8 +17,25 @@ fs.readFile(process.argv[2], "utf8", function (err, contents) {
 
     return sorted[middle];
   };
-  const median = findMedian(crabs)
+  const median = findMedian(crabs);
   const part1 = crabs.reduce((acc, c) => acc + Math.abs(c - median), 0);
 
-  console.log(part1);
+  const factorial = (num) => {
+    if (num < 0) return -1;
+    else if (num === 0) return 1;
+    else {
+      return num + factorial(num - 1);
+    }
+  };
+  const part2 = (() => {
+    const mean = Math.round(crabs.reduce((sum, n) => sum + n) / crabs.length);
+    const tries = [mean - 1, mean, mean + 1];
+    const calcDistance = (n) => (n * (n + 1)) / 2;
+    const totals = tries.map((t) => {
+      return crabs.reduce((sum, n) => sum + calcDistance(Math.abs(n - t)), 0);
+    });
+    return Math.min(...totals);
+  })();
+
+  console.log(part1, part2);
 });
