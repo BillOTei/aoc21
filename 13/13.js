@@ -52,4 +52,6 @@ fs.readFile(process.argv[2], "utf8", function (err, contents) {
     arr[i] = new Array(maxX).fill(val);
   }
   part2.forEach(([x, y]) => (arr[y][x] = "#"));
+
+  console.log(part1, part2)
 });
