@@ -27,5 +27,39 @@ fs.readFile(process.argv[2], "utf8", function (err, contents) {
   const part1 =
     sortedElements[sortedElements.length - 1][1] - sortedElements[0][1];
 
+  // let elementsMap2 = new Map();
+  // let pairsMap = new Map();
+  // template.forEach((e, i) => {
+  //   elementsMap2.set(e, (elementsMap2.get(e) || 0) + 1);
+  //   template[i + 1] &&
+  //     pairsMap.set(
+  //       e + template[i + 1],
+  //       (pairsMap.get(e + template[i + 1]) || 0) + 1
+  //     );
+  // });
+  //
+  // const insert = (pairs, step, goal) => {
+  //   if (step === goal) return pairs;
+  //   else
+  //     return insert(
+  //       new Map(
+  //         [...pairs].reduce((acc, [pair, count]) => {
+  //           const newElem = rules.get(pair);
+  //           const currentPair = [pair, 0];
+  //           elementsMap2.set(newElem, (elementsMap2.get(newElem) || 0) + count);
+  //           const newPair1 = [pair[0] + newElem, count];
+  //           const newPair2 = [newElem + pair[1], count];
+  //
+  //           return [...acc, currentPair, newPair1, newPair2];
+  //         }, [])
+  //       ),
+  //       step + 1,
+  //       goal
+  //     );
+  // };
+  // insert(pairsMap, 0, 10);
+  // const sortedElements = [...elementsMap2].sort((a, b) => a[1] - b[1]);
+  // const part2 =
+  //   sortedElements[sortedElements.length - 1][1] - sortedElements[0][1];
   console.log(part1);
 });
