@@ -22,9 +22,10 @@ fs.readFile(process.argv[2], "utf8", function (err, contents) {
         goal
       );
   };
-  const _ = insert(template, 0, 10);
+  insert(template, 0, 10);
   const sortedElements = [...elementsMap].sort((a, b) => a[1] - b[1]);
-  const part1 = sortedElements[sortedElements.length - 1][1] - sortedElements[0][1]
+  const part1 =
+    sortedElements[sortedElements.length - 1][1] - sortedElements[0][1];
 
   console.log(part1);
 });
